@@ -1,5 +1,6 @@
-var linkedStorage = (process.env.MONGODB_PORT_27017_TCP_ADDR || 'localhost' )
-linkedStorage += ':' + (process.env.MONGODB_PORT_27017_TCP_PORT || '27017' )
+require('dotenv').config()
+var linkedStorage = (process.env.MONGODB_URI || 'mongodb://username:D1fficultP%40ssw0rd@localhost:27017/?authSource=admin' )
+
 module.exports = {
-    'url' : 'mongodb://' + linkedStorage + '/passport'
+    'url' : linkedStorage
 }

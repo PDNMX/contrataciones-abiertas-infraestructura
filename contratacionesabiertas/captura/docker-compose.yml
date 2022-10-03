@@ -1,0 +1,29 @@
+version: '3.1'
+
+volumes:
+  datapg:
+
+services:
+
+  db:
+    image: postgres:12-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_NAME}
+    volumes:
+      - datapg:/var/lib/postgresql/data
+    #entrypoint: user-db.sh
+
+  capturador:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 3310:3000
+    links:
+      - db
+    depends_on:
+      - db

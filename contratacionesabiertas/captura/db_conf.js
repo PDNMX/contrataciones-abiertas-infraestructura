@@ -1,5 +1,6 @@
 
 var options = {};
+require('dotenv').config()
 
 var pgp = require('pg-promise')(options);
 
@@ -15,13 +16,13 @@ var edca_db = pgp(config);
 
 console.log('DB Config -> ', JSON.stringify(config));
 
-const configDash = {
+/* const configDash = {
     host: process.env.POSTGRES_HOST || 'localhost',
     port: process.env.POSTGRES_PORT || 5432,
     database: process.env.POSTGRES_NAME ||'edca',
     user: process.env.POSTGRES_USER || 'prueba_dashboard',
     password: process.env.POSTGRES_PASSWORD || 'p4ssw0rd'
-};
+}; */
 
 const globals = {
     site : {
@@ -32,14 +33,14 @@ const globals = {
     }
 }
 
-var connectionDashboard = pgp(configDash);
-var dash_user = configDash.user;
+/* var connectionDashboard = pgp(configDash);
+var dash_user = configDash.user; */
 
 
 module.exports = {
     pgp: pgp,
     edca_db : edca_db,
-    dashboard: connectionDashboard,
-    dash_user: dash_user,
+    /* dashboard: connectionDashboard,
+    dash_user: dash_user, */
     globals: globals
 };
