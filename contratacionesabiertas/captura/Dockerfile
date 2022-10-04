@@ -9,6 +9,7 @@ WORKDIR /edca-capturador
 RUN npm install \
   && npm install -g bower \
   && npm install -g pm2 \
+  && apk add git\
   && cd public \
   && bower --allow-root install
 
